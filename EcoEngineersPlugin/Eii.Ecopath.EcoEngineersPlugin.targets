@@ -1,0 +1,20 @@
+<Project>
+  <Target Name="SetEcoEngineersPluginBuildDestination"
+          AfterTargets="ResolveReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Update="@(ReferenceCopyLocalPaths)"
+                               Condition="'%(ReferenceCopyLocalPaths.Filename)' == 'EwEEcoEngineersPlugin'">
+        <DestinationSubDirectory>Plugins\EcoEngineersPlugin\</DestinationSubDirectory>
+      </ReferenceCopyLocalPaths>
+    </ItemGroup>
+  </Target>
+  <Target Name="SetEcoEngineersPluginPublishDestination"
+          AfterTargets="ComputeResolvedFilesToPublishList">
+    <ItemGroup>
+      <ResolvedFileToPublish Update="@(ResolvedFileToPublish)"
+                             Condition="'%(ResolvedFileToPublish.Filename)' == 'EwEEcoEngineersPlugin'">
+        <RelativePath>Plugins\EcoEngineersPlugin\%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)</RelativePath>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>
